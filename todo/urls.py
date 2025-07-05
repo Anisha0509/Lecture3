@@ -4,5 +4,5 @@ from . import views
 app_name = "todo"
 urlpatterns = [
     path("", views.index, name = "index"),
-    path("/addTasks", views.addTasks, name = "addTasks"),
+    path("addTasks", views.addTasks, name = "addTasks"),
 ]
