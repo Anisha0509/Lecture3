@@ -15,7 +15,10 @@
             <br>
             <p> 
                 <ol>
-                    <li> {{ tasks }} </li>
+                    {% for task in tasks%}
+                        <li> {{ task }} </li>
+                        <br>
+                    {% endfor %}
                 </ol>
             </p>
         </div>
