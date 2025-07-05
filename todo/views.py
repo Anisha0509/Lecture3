@@ -1,7 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
+from django.urls import reverse
 
-tasks = ["clean", "groceries", "weekend-reset"]
+tasks = []
 
 class NewTaskForm(forms.Form):
     task = forms.CharField(label = "New task")
@@ -9,19 +11,17 @@ class NewTaskForm(forms.Form):
 
 # Create your views here.
 def index(request):
-    return render(request, "todo/index.html", {
-        "tasks" : tasks
-    })
+    if "tasks" not in request.session:
+        request.session["tasks"] = []
+    return render(request, "todo/index.html", { "tasks" : request.session["tasks"] })
 
 def addTasks(request):
     if request.method == "POST":
         form = NewTaskForm(request.POST)
         if form.is_valid():
             task = form.cleaned_data["task"]
-            tasks.append(task)
-            return render(request, "todo/index.html", {
-                "tasks" : tasks
-            })
+            request.session["tasks"] += [task]
+            return HttpResponseRedirect(reverse("todo:index"))
         else:
             return render(request, "todo/addTasks.html", {
                 "form" : form
