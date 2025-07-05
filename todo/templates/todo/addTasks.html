@@ -9,7 +9,8 @@
         <h1> Add tasks </h1>
             <form action = "{% url 'todo:addTasks' %}" method = "post">
                 {% csrf_token %}
-                <input type = "text" name = "task"> 
+                <!-- <input type = "text" name = "task">  -->
+                {{ form }}
                 <input type = "submit" name = "submit">
             </form>
         </div>
