@@ -1,0 +1,19 @@
+{% extends "todo/layout.html" %}
+
+{% block title %} 
+    - add tasks
+{% endblock %}
+
+{% block body %}
+        <div>
+        <h1> Add tasks </h1>
+            <form>
+                <input type = "text" name = "task"> 
+                <input type = "submit" name = "submit">
+            </form>
+        </div>
+
+        <div>
+            <a href = "{% url 'todo:index' %}"> View tasks </a>
+        </div>
+{% endblock %}
