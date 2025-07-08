@@ -3,8 +3,6 @@ from django.shortcuts import render
 from django import forms
 from django.urls import reverse
 
-tasks = []
-
 class NewTaskForm(forms.Form):
     task = forms.CharField(label = "New task")
     # priority = forms.IntegerField(label = "Priority", min_value = 1, max_value = 5)
