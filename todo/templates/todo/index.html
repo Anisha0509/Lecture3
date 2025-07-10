@@ -5,21 +5,18 @@
 {% endblock %}
 
 {% block body %}
-        <!-- i have access to a python list called `tasks` -->
         <div>
             <h1> to do:</h1>
             <br>
             <p> 
-                {% if tasks|length is 0 %}
-                    Nohing here yet. Click below to add a new task.
-                {%  else %}
-                    <ol>
-                        {% for task in tasks %}
-                            <li> {{ task }} </li>
-                            <br>
-                        {% endfor %}
-                    </ol>
-                {%  endif %}
+                <ul>
+                    {% for task in tasks %}
+                        <li> {{ task.taskItem }} </li>
+                        <br>
+                        {%  empty %}
+                            Nohing here yet. Click below to add a new task.
+                    {% endfor %}
+                </ul>
             </p>
         </div>
 
